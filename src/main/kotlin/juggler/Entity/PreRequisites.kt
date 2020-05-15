@@ -1,13 +1,22 @@
 package juggler.Entity
 
+import java.io.Serializable
 import javax.persistence.*
+
+@Embeddable
+class PrerequisitesId (
+        var pattern: Int,
+        var dependsOnPattern: Int
+) : Serializable
 
 @Entity
 @Table(name = "prerequisites")
+@IdClass(PrerequisitesId::class)
 class PreRequisites(
-        @Id var id: Long?,
+        @Id
+        @Column(name = "pattern_id")
+        var pattern: Int,
         @ManyToOne
-        var patternId: Pattern,
-        @ManyToOne
-        var depends_on_pattern_id: Pattern
+        @Id
+        var dependsOnPattern: Pattern
 )

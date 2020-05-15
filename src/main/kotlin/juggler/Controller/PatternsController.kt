@@ -16,7 +16,7 @@ class PatternsController(val patternsRepository: PatternsRepository) {
 
     @GetMapping("/pattern/{name}")
     fun getPatternByName(@PathVariable name: String): Pattern? {
-        return patternsRepository.findByName(name);
+        return patternsRepository.findByName(name)
     }
 
 }
